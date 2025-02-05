@@ -1,0 +1,1 @@
+web: gunicorn number_api.wsgi:application --preload
