@@ -1,4 +1,3 @@
-from django.shortcuts import render
 import requests
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -12,7 +11,7 @@ def classify_number(request):
 
     # Returns a 404 if the number is not provided or of wrong format
     if number is None or not number.isdigit():
-        return Response({"number": number,
+        return Response({"number": "alphabet",
                          "error": True       
                         }, status=400)
 
