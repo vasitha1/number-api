@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'number-api-jl77.onrender.com',
     'localhost',
-    '127.0.0.1:8000'
+    '127.0.0.1',
 ]
 
 
