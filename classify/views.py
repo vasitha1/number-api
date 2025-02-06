@@ -9,22 +9,27 @@ def classify_number(request):
     # Get the number that is parsed into the URL
     number = request.GET.get('number')
 
-    # Returns a 404 if the number is not provided or of wrong format
-    if number is None or not number.isdigit():
+    str_num = number #To keep the variable number as a string
+
+    #handling negative
+    try:
+        number = int(number)
+    except (ValueError, TypeError):
+        # Returns a 404 if the number is not provided or of wrong format
         return Response({"number": "alphabet",
                          "error": True       
                         }, status=400)
 
     #Finding number of digits for amstrong before changing number to an 
-    digit_count = len(number)
+    digit_count = len(str_num) if str_num[0] != "-" else len(str_num) - 1
     amstrong_sum = 0
     digit_sum = 0
 
-    for digit in number:
+    for digit in str_num:
+        if digit == '-':
+            continue
         amstrong_sum += (int(digit)) ** digit_count
         digit_sum += int(digit)
-
-    number = int(number)
 
     is_amstrong = True if amstrong_sum == number else False
 
